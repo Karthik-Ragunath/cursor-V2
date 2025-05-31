@@ -21,6 +21,24 @@
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}",
             "args": []
+        },
+        {
+            "name": "Train: Manim",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/train.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": []
+        },
+        {
+            "name": "Download: DeepSeek",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/scratchpad/download_deepseek.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": []
         }
     ]
 }
