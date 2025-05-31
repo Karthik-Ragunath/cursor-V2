@@ -39,6 +39,101 @@
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}",
             "args": []
+        },
+        {
+            "name": "SFT Training: Start Fine-tuning",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/sft_training.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": [],
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}",
+                "CUDA_VISIBLE_DEVICES": "0"
+            }
+        },
+        {
+            "name": "SFT Training: Monitor - Live",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/monitor_training.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--mode", "live",
+                "--refresh_interval", "30"
+            ]
+        },
+        {
+            "name": "SFT Training: Monitor - Plot",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/monitor_training.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--mode", "plot"
+            ]
+        },
+        {
+            "name": "SFT Training: Monitor - Summary",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/monitor_training.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--mode", "summary"
+            ]
+        },
+        {
+            "name": "SFT Testing: Dataset Mode",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/test_finetuned_model.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--mode", "dataset",
+                "--num_samples", "10"
+            ]
+        },
+        {
+            "name": "SFT Testing: Interactive Mode",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/test_finetuned_model.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--mode", "interactive"
+            ]
+        },
+        {
+            "name": "SFT Testing: Both Modes",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/test_finetuned_model.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--mode", "both",
+                "--num_samples", "5"
+            ]
+        },
+        {
+            "name": "SFT Testing: Large Dataset Test",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/test_finetuned_model.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--mode", "dataset",
+                "--num_samples", "50",
+                "--output_file", "large_test_results.json"
+            ]
         }
     ]
 }
