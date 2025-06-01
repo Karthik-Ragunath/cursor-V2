@@ -317,6 +317,71 @@
                 "PYTHONPATH": "${workspaceFolder}",
                 "CUDA_VISIBLE_DEVICES": "0"
             }
+        },
+        {
+            "name": "Base Model: Default Questions",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/test_base_manim.py",
+            "args": ["--mode", "default"],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}",
+                "CUDA_VISIBLE_DEVICES": "0"
+            }
+        },
+        {
+            "name": "Base Model: Dataset Test (1 sample)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/test_base_manim.py",
+            "args": ["--mode", "dataset", "--num_samples", "1"],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}",
+                "CUDA_VISIBLE_DEVICES": "0"
+            }
+        },
+        {
+            "name": "Base Model: Interactive Mode",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/test_base_manim.py",
+            "args": ["--mode", "interactive"],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}",
+                "CUDA_VISIBLE_DEVICES": "0"
+            }
+        },
+        {
+            "name": "Base Model: All Test Modes",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/test_base_manim.py",
+            "args": ["--mode", "all", "--num_samples", "3"],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}",
+                "CUDA_VISIBLE_DEVICES": "0"
+            }
+        },
+        {
+            "name": "Base vs LoRA: Side-by-Side Comparison",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/test_base_manim.py",
+            "args": ["--mode", "dataset", "--num_samples", "10", "--output_file", "base_vs_lora_comparison.json"],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}",
+                "CUDA_VISIBLE_DEVICES": "0"
+            }
         }
     ]
 }
