@@ -364,7 +364,7 @@ def main():
         return
     
     # Step 5: Create training arguments
-    training_args = create_training_arguments(output_dir, num_train_epochs=10)
+    training_args = create_training_arguments(output_dir, num_train_epochs=500)
     
     # Step 6: Initialize trainer and start training
     sft_trainer = SFTTrainer(model, tokenizer, train_dataset, val_dataset, training_args)
