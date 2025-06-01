@@ -196,6 +196,15 @@
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}",
             "args": []
+        },
+        {
+            "name": "Analyze data lengths",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/analyze_data_lengths.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": []
         }
     ]
 }
