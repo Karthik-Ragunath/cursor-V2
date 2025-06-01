@@ -134,6 +134,68 @@
                 "--num_samples", "50",
                 "--output_file", "large_test_results.json"
             ]
+        },
+        {
+            "name": "LoRA Training: Start Fine-tuning",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/sft_training.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": [],
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}",
+                "CUDA_VISIBLE_DEVICES": "0"
+            }
+        },
+        {
+            "name": "LoRA Testing: Default Questions",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/load_lora_model.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": []
+        },
+        {
+            "name": "LoRA Testing: Interactive Mode",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/load_lora_model.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--interactive"
+            ]
+        },
+        {
+            "name": "LoRA Testing: Single Question",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/load_lora_model.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--question", "Create a red circle that moves in a square pattern"
+            ]
+        },
+        {
+            "name": "Cross-Entropy Example",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/cross_entropy_example.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": []
+        },
+        {
+            "name": "Debug model layers",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/debug_model_layers.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": []
         }
     ]
 }
