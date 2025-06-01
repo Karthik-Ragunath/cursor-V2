@@ -26,7 +26,7 @@ logger = logging.getLogger(__name__)
 class SFTDataset:
     """Custom dataset class for SFT training"""
     
-    def __init__(self, questions: List[str], python_codes: List[str], tokenizer, max_length: int = 2048):
+    def __init__(self, questions: List[str], python_codes: List[str], tokenizer, max_length: int = 3600): # 3600 for bespoke dataset
         self.questions = questions
         self.python_codes = python_codes
         self.tokenizer = tokenizer
@@ -208,9 +208,9 @@ def create_training_arguments(output_dir: str, num_train_epochs: int = 3):
         output_dir=output_dir,
         overwrite_output_dir=True,
         num_train_epochs=num_train_epochs,
-        per_device_train_batch_size=2,  # Slightly larger batch for LoRA
-        per_device_eval_batch_size=2,
-        gradient_accumulation_steps=4,  # Effective batch size = 8
+        per_device_train_batch_size=1,  # Slightly larger batch for LoRA
+        per_device_eval_batch_size=1,
+        gradient_accumulation_steps=2,  # Effective batch size = 8
         learning_rate=2e-4,             # Higher LR for LoRA (typical range: 1e-4 to 3e-4)
         weight_decay=0.01,
         logging_dir=f"{output_dir}/logs",
@@ -348,8 +348,8 @@ def main():
     
     # Step 3: Create datasets
     logger.info("Creating training datasets...")
-    train_dataset = SFTDataset(train_questions, train_codes, tokenizer, max_length=2048)
-    val_dataset = SFTDataset(val_questions, val_codes, tokenizer, max_length=2048)
+    train_dataset = SFTDataset(train_questions, train_codes, tokenizer, max_length=3600)
+    val_dataset = SFTDataset(val_questions, val_codes, tokenizer, max_length=3600)
     
     # Step 4: Validate a few samples
     logger.info("Validating dataset samples...")
@@ -364,7 +364,7 @@ def main():
         return
     
     # Step 5: Create training arguments
-    training_args = create_training_arguments(output_dir, num_train_epochs=3)
+    training_args = create_training_arguments(output_dir, num_train_epochs=10)
     
     # Step 6: Initialize trainer and start training
     sft_trainer = SFTTrainer(model, tokenizer, train_dataset, val_dataset, training_args)
@@ -390,7 +390,7 @@ def test_inference(model, tokenizer, test_question: str):
         with torch.no_grad():
             outputs = model.generate(
                 **inputs,
-                max_new_tokens=256,         # Shorter generation for testing
+                max_new_tokens=3600,        # Set based on the max length of the dataset
                 temperature=0.8,            # Slightly more conservative
                 do_sample=True,
                 top_p=0.9,                 # Nucleus sampling
