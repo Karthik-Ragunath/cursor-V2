@@ -185,8 +185,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/cross_entropy_example.py",
             "console": "integratedTerminal",
-            "cwd": "${workspaceFolder}",
-            "args": []
+            "justMyCode": true
         },
         {
             "name": "Debug model layers",
@@ -205,6 +204,119 @@
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}",
             "args": []
+        },
+        {
+            "name": "LoRA Test: Default Questions",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/test_finetuned_lora.py",
+            "args": ["--mode", "dataset", "--num_samples", "1"],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}",
+                "CUDA_VISIBLE_DEVICES": "0"
+            }
+        },
+        {
+            "name": "LoRA Test: Dataset Samples",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/test_finetuned_lora.py",
+            "args": ["--mode", "dataset", "--num_samples", "5"],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}",
+                "CUDA_VISIBLE_DEVICES": "0"
+            }
+        },
+        {
+            "name": "LoRA Test: Interactive Mode",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/test_finetuned_lora.py",
+            "args": ["--mode", "interactive"],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}",
+                "CUDA_VISIBLE_DEVICES": "0"
+            }
+        },
+        {
+            "name": "LoRA Test: Large Dataset Sample",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/test_finetuned_lora.py",
+            "args": ["--mode", "dataset", "--num_samples", "20", "--skip_samples", "50", "--output_file", "lora_large_test.json"],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}",
+                "CUDA_VISIBLE_DEVICES": "0"
+            }
+        },
+        {
+            "name": "LoRA Test: All Modes",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/test_finetuned_lora.py",
+            "args": ["--mode", "all", "--num_samples", "3"],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}",
+                "CUDA_VISIBLE_DEVICES": "0"
+            }
+        },
+        {
+            "name": "LoRA: List Available Checkpoints",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/test_finetuned_lora.py",
+            "args": ["--list_checkpoints"],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "LoRA Test: Checkpoint-50 (Latest)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/test_finetuned_lora.py",
+            "args": ["--mode", "default", "--checkpoint", "checkpoint-50"],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}",
+                "CUDA_VISIBLE_DEVICES": "0"
+            }
+        },
+        {
+            "name": "LoRA Test: Checkpoint-6 (Early)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/test_finetuned_lora.py",
+            "args": ["--mode", "default", "--checkpoint", "checkpoint-6"],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}",
+                "CUDA_VISIBLE_DEVICES": "0"
+            }
+        },
+        {
+            "name": "LoRA Compare: Final vs Latest Checkpoint",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/test_finetuned_lora.py",
+            "args": ["--mode", "default", "--output_file", "final_adapter_results.json"],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}",
+                "CUDA_VISIBLE_DEVICES": "0"
+            }
         }
     ]
 }
